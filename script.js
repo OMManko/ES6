@@ -52,20 +52,23 @@ class News {
     }
 }
 
+function fetchRequest(req) {
+    return fetch(req)
+        .then((response) => response.json())
+        .then((data) => data.articles.map(news => {
+            let newsArticle = new News(news);
+            return newsArticle.createNewsArticle();
+        }))
+        .catch(function(error) {
+            console.log(error);
+        });
+}
+
 
 let url = `https://newsapi.org/v2/top-headlines?category=general&country=us&sortBy=publishedAt&apiKey=0672e1602aad4dc9aa61e122190937d7`,
     req = new Request(url);
 
-fetch(req)
-    .then((response) => response.json())
-    .then((data) => data.articles.map(news => {
-        let newsArticle = new News(news);
-        return newsArticle.createNewsArticle();
-    }))
-    .catch(function(error) {
-        console.log(error);
-    });
-
+fetchRequest(req);
 
 for (let i = 0; i < radios.length; i++) {
     radios[i].addEventListener("click", function() {
@@ -75,15 +78,7 @@ for (let i = 0; i < radios.length; i++) {
 
         ul.innerHTML = "";
 
-        fetch(req)
-            .then((response) => response.json())
-            .then((data) => data.articles.map(news => {
-                let newsArticle = new News(news);
-                return newsArticle.createNewsArticle();
-            }))
-            .catch(function(error) {
-                console.log(error);
-            });
+        fetchRequest(req);
     });
 }
 
