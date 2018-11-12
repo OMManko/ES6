@@ -1,15 +1,8 @@
 (function() {
     const radios = document.querySelectorAll(".news-radio");
     const ul = document.querySelector(".news-wrapper");
-
-
-    function createNode(element) {
-        return document.createElement(element);
-    }
-
-    function append(parent, el) {
-        return parent.appendChild(el);
-    }
+    const url = `https://newsapi.org/v2/top-headlines?category=general&country=us&sortBy=publishedAt&apiKey=0672e1602aad4dc9aa61e122190937d7`;
+    const req = new Request(url);
 
     class News {
         constructor(data) {
@@ -23,13 +16,13 @@
         }
 
         createNewsArticle() {
-            let li = createNode(("li")),
-                article = createNode("article"),
-                div = createNode("div"),
-                div2 = createNode("div"),
-                img = createNode("img"),
-                a = createNode("a"),
-                span = createNode("span");
+            let li = document.createElement("li"),
+                article = document.createElement("article"),
+                div = document.createElement("div"),
+                div2 = document.createElement("div"),
+                img = document.createElement("img"),
+                a = document.createElement("a"),
+                span = document.createElement("span");
 
             li.className = "news-block";
             div.className = "news-img-wrapper";
@@ -43,39 +36,32 @@
             span.innerHTML = this.description;
             img.src = this.urlToImage;
 
-            append(li, article);
-            append(article, div);
-            append(div, img);
-            append(article, div2);
-            append(div2, a);
-            append(div2, span);
-            append(ul, li);
+            li.appendChild(article);
+            article.appendChild(div);
+            div.appendChild(img);
+            article.appendChild(div2);
+            div2.appendChild(a);
+            div2.appendChild(span);
+            ul.appendChild(li);
         }
     }
 
     function fetchRequest(req) {
         return fetch(req)
-            .then((response) => response.json())
-            .then((data) => data.articles.map(news => {
-                let newsArticle = new News(news);
-                return newsArticle.createNewsArticle();
-            }))
+            .then(response => response.json())
+            .then(data => data.articles.map(news => new News(news).createNewsArticle()))
             .catch(function(error) {
-                console.log(error);
+                console.log(error)
             });
     }
-
-
-    let url = `https://newsapi.org/v2/top-headlines?category=general&country=us&sortBy=publishedAt&apiKey=0672e1602aad4dc9aa61e122190937d7`,
-        req = new Request(url);
 
     fetchRequest(req);
 
     for (let i = 0; i < radios.length; i++) {
         radios[i].addEventListener("click", function() {
             let searchCategory = this.nextElementSibling.innerHTML;
-            let url = `https://newsapi.org/v2/top-headlines?category=${searchCategory}&country=us&sortBy=publishedAt&apiKey=0672e1602aad4dc9aa61e122190937d7`,
-                req = new Request(url);
+            const url = `https://newsapi.org/v2/top-headlines?category=${searchCategory}&country=us&sortBy=publishedAt&apiKey=0672e1602aad4dc9aa61e122190937d7`;
+            const req = new Request(url);
 
             ul.innerHTML = "";
 
