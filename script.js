@@ -8,8 +8,6 @@
         constructor({title, description, author, source, url, urlToImage}) {
             this.title = title;
             this.description = description;
-            this.author = author;
-            this.source = source.name;
             this.url = url;
             this.urlToImage = "http://denrakaev.com/wp-content/uploads/2015/03/no-image-800x511.png";
             if (urlToImage !== null) this.urlToImage = urlToImage;
