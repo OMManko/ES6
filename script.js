@@ -5,14 +5,14 @@
     const req = new Request(url);
 
     class News {
-        constructor(data) {
-            this.title = data.title;
-            this.description = data.description;
-            this.author = data.author;
-            this.source = data.source.name;
-            this.url = data.url;
+        constructor({title, description, author, source, url, urlToImage}) {
+            this.title = title;
+            this.description = description;
+            this.author = author;
+            this.source = source.name;
+            this.url = url;
             this.urlToImage = "http://denrakaev.com/wp-content/uploads/2015/03/no-image-800x511.png";
-            if (data.urlToImage !== null) this.urlToImage = data.urlToImage;
+            if (urlToImage !== null) this.urlToImage = urlToImage;
         }
 
         createNewsArticle() {
