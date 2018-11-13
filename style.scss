@@ -17,36 +17,37 @@ $line-height-base:      1.33;
 
 $border-radius-base:    2px;
 
-
+$gutter-width:          16px;
 
 // breakpoints
 $breakpoints: (
   phone: 320,
+  phone-max: 767,
   tablet: 768,
   desktop: 992,
   desktop-large: 1200
 );
 
 @mixin phone {
-  @media only screen and (min-width: map-get($breakpoints, phone) + px) {
+  @media (max-width: map-get($breakpoints, phone-max) + px) {
     @content;
   }
 }
 
 @mixin tablet {
-  @media only screen and (min-width: map-get($breakpoints, tablet) + px) {
+  @media (min-width: map-get($breakpoints, tablet) + px) {
     @content;
   }
 }
 
 @mixin desktop {
-  @media only screen and (min-width: map-get($breakpoints, desktop) + px) {
+  @media (min-width: map-get($breakpoints, desktop) + px) {
     @content;
   }
 }
 
 @mixin desktop-large {
-  @media only screen and (min-width: map-get($breakpoints, desktop-large) + px) {
+  @media (min-width: map-get($breakpoints, desktop-large) + px) {
     @content;
   }
 }
@@ -64,18 +65,18 @@ body {
      font-size: $font-size-base;
      line-height: $line-height-base;
      min-width: map-get($breakpoints, phone) + px;
-     overflow-x: hidden;
+     //overflow-x: hidden;
      display: flex;
      min-height: 100vh;
      flex-direction: column;
  }
 
 .container {
-  padding: 0 16px;
+  padding: 0 $gutter-width;
   margin: 0 auto;
 
-  @include tablet() {
-    max-width: 720px;
+  @include tablet {
+    max-width: 740px;
   }
 
   @include desktop() {
@@ -106,18 +107,63 @@ main {
 .news {
 
   &-categories-wrapper {
+    position: relative;
     margin-bottom: 30px;
+
+    @include phone() {
+      background-color: $c-white;
+      overflow: hidden;
+      margin-right: -16px;
+      margin-left: -16px;
+
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: $gutter-width;
+        height: 41px;
+        //background: rgba(242,242,242,0.7);
+        background: -webkit-gradient(linear,left top,right top,color-stop(0%,rgba(255,255,255,0)),color-stop(100%,rgba(255,255,255,1)));
+        z-index: 1;
+        right: 0;
+      }
+    }
+
+
+  }
+
+
+  &-categories {
+    display: flex;
+
+    @include phone() {
+      overflow-x: auto;
+      box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+    }
+
+    @include tablet() {
+      flex-wrap: wrap;
+    }
   }
 
   &-category {
-    display: inline-block;
-    padding: 6px 16px;
-    border: 1px solid darken($c-gray, 10%);
+    padding: 15px 25px;
     border-radius: 999px;
-    background-color: $c-white;
-    margin: 0 10px 10px 0;
     cursor: pointer;
     font-size: $font-size-m;
+    position: relative;
+
+    @include phone() {
+      & + & {
+        margin-left: 10px;
+      }
+    }
+
+    @include tablet {
+      margin-right: 10px;
+      margin-bottom: 10px;
+      background-color: $c-white;
+    }
   }
 
   &-radio {
@@ -203,9 +249,7 @@ main {
   &-description {
     font-size: $font-size-s;
   }
-
 }
-
 
 .footer {
   background-color: $c-black;
@@ -216,6 +260,3 @@ main {
     color: $c-white;
   }
 }
-
-
-
