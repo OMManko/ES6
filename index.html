@@ -6,66 +6,72 @@
 </head>
 <body>
 
-    <header class="header">
-        <div class="container">
-            <div class="header-logo">
-                News
-            </div>
-        </div>
-
-    </header>
-
-    <main>
-        <div class="container">
-
-            <div class="news-categories-wrapper">
-                <div class="news-categories">
-                    <label for="general" class="news-category">
-                        <input type="radio" id="general" name="categories" class="news-radio" checked="checked">
-                        <span class="news-category-value">General</span>
-                    </label>
-                    <label for="business" class="news-category">
-                        <input type="radio" id="business" name="categories" class="news-radio">
-                        <span class="news-category-value">Business</span>
-                    </label>
-                    <label for="entertainment" class="news-category" >
-                        <input type="radio" id="entertainment" name="categories" class="news-radio">
-                        <span class="news-category-value">Entertainment</span>
-                    </label>
-                    <label for="health" class="news-category">
-                        <input type="radio" id="health" name="categories" class="news-radio">
-                        <span class="news-category-value">Health</span>
-                    </label>
-                    <label for="science" class="news-category">
-                        <input type="radio" id="science" name="categories" class="news-radio">
-                        <span class="news-category-value">Science</span>
-                    </label>
-                    <label for="sports" class="news-category">
-                        <input type="radio" id="sports" name="categories" class="news-radio">
-                        <span class="news-category-value">Sports</span>
-                    </label>
-                    <label for="technology" class="news-category">
-                        <input type="radio" id="technology" name="categories" class="news-radio">
-                        <span class="news-category-value">Technology</span>
-                    </label>
+    <div class="wrapper">
+        <header class="header">
+            <div class="container">
+                <div class="header-logo">
+                    News
                 </div>
             </div>
-            <div class="news">
-                <ul class="news-wrapper">
 
-                </ul>
+        </header>
+
+        <main>
+            <div class="container">
+
+                <div class="news-categories-wrapper">
+                    <div class="news-categories">
+                        <label for="general" class="news-category">
+                            <input type="radio" id="general" name="categories" class="news-radio" checked="checked">
+                            <span class="news-category-value">General</span>
+                        </label>
+                        <label for="business" class="news-category">
+                            <input type="radio" id="business" name="categories" class="news-radio">
+                            <span class="news-category-value">Business</span>
+                        </label>
+                        <label for="entertainment" class="news-category" >
+                            <input type="radio" id="entertainment" name="categories" class="news-radio">
+                            <span class="news-category-value">Entertainment</span>
+                        </label>
+                        <label for="health" class="news-category">
+                            <input type="radio" id="health" name="categories" class="news-radio">
+                            <span class="news-category-value">Health</span>
+                        </label>
+                        <label for="science" class="news-category">
+                            <input type="radio" id="science" name="categories" class="news-radio">
+                            <span class="news-category-value">Science</span>
+                        </label>
+                        <label for="sports" class="news-category">
+                            <input type="radio" id="sports" name="categories" class="news-radio">
+                            <span class="news-category-value">Sports</span>
+                        </label>
+                        <label for="technology" class="news-category">
+                            <input type="radio" id="technology" name="categories" class="news-radio">
+                            <span class="news-category-value">Technology</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="news">
+                    <ul class="news-wrapper">
+
+                    </ul>
+                </div>
             </div>
-        </div>
-    </main>
+        </main>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-copyright">
-                &copy; 2019 Manko group inc. All right reserved.
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-copyright">
+                    &copy; 2019 Manko group inc. All right reserved.
+                </div>
             </div>
-        </div>
-    </footer>
+        </footer>
 
-<script src="script.js"></script>
+    </div>
+
+
+    <script src="fetch.umd.js"></script> <!-- window fetch polyfill for IE https://github.com/github/fetch -->
+    <script src="polyfill.js"></script> <!-- polyfill for async-await functions -->
+    <script src="script.js"></script>
 </body>
 </html>

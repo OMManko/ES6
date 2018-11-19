@@ -1,0 +1,28 @@
+{
+  "name": "omanko-es6.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "build": "babel src --out-file script.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OMManko/omanko-es6.github.io.git"
+  },
+  "author": "omanko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OMManko/omanko-es6.github.io/issues"
+  },
+  "homepage": "https://github.com/OMManko/omanko-es6.github.io#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.6",
+    "@babel/preset-env": "^7.1.6",
+    "whatwg-fetch": "^3.0.0"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0"
+  }
+}
