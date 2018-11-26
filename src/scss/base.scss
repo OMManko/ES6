@@ -1,0 +1,15 @@
+body,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: $c-gray;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  min-width: map-get($breakpoints, phone) + px;
+  min-height: 100%;
+  display: flex;
+}
